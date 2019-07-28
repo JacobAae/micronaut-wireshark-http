@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: net.grydeske.network.course
+---
+testFramework: spock
+sourceLanguage: groovy
