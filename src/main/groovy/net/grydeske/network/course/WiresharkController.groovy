@@ -11,6 +11,11 @@ class WiresharkController {
 
     @View("intro")
     @Get("/intro")
+    HttpStatus intro() {
+        return HttpStatus.OK
+    }
+
+    @Get("/")
     HttpStatus index() {
         return HttpStatus.OK
     }

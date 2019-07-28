@@ -1,0 +1,13 @@
+= README
+
+== Heroku Notes
+
+ gw stage
+ heroku login
+ heroku container:login
+ heroku container:push web --app=network-security-wireshark
+ heroku container:release web  --app=network-security-wireshark
+
+ heroku logs --tail  --app=network-security-wireshark
+
+Deployed on heroku at: http://wireshark.grydeske.net/intro

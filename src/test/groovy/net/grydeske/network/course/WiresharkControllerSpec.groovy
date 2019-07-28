@@ -21,13 +21,12 @@ class WiresharkControllerSpec extends Specification {
     @AutoCleanup @Inject @Client("/")
     RxHttpClient client
 
-
-
     void "test index"() {
         given:
-        HttpResponse response = client.toBlocking().exchange("/wireshark")
+        HttpResponse response = client.toBlocking().exchange("/")
 
         expect:
         response.status == HttpStatus.OK
     }
+
 }

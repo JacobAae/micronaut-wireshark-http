@@ -55,3 +55,6 @@ run.jvmArgs('-noverify', '-XX:TieredStopAtLevel=1', '-Dcom.sun.management.jmxrem
 tasks.withType(GroovyCompile) {
     groovyOptions.forkOptions.jvmArgs.add('-Dgroovy.parameters=true')
 }
+
+task stage(dependsOn: ['build', 'clean'])
+build.mustRunAfter clean
