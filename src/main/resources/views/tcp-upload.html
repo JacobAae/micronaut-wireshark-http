@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>Upload page for TCP Wireshark Lab</title>
+    </head>
+    <body>
+
+    <h1>Upload page for TCP Wireshark Lab</h1>
+    <br>
+
+    <p>If you have followed the instructions for the TCP Wireshark Lab, you have already downloaded an ASCII copy of
+    Alice and Wonderland from <a href="alice.txt">http://wireshark.grydeske.net/alice.txt</a>
+    and you also have the Wireshark packet sniffer running and capturing
+    packets on your computer.
+    </p>
+    <br/>
+
+
+    <form method="post" action="tcp-receive" enctype="multipart/form-data">
+        <p>Click on the Browse button below
+            to select the directory/file name for the copy of alice.txt that is stored
+            on your computer.
+        </p>
+
+        <input type="file" name="file">
+        <p>Once you have selected the file,
+    click on the "Upload alice.txt file" button below. This will cause
+    your browser to send a copy of alice.txt over an HTTP connection (using TCP)
+    to the web server. After clicking on the button, wait
+    until a short message is displayed indicating the the upload is complete.
+    Then stop your Wireshark packet sniffer - you're ready to begin analyzing the
+    TCP transfer of alice.txt from your computer
+    </p><p>
+    <input type="SUBMIT" value="Upload alice.txt file">
+</p></form>
+
+
+</body>
+</html>

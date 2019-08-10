@@ -7,6 +7,7 @@ import io.micronaut.http.MediaType
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
 import io.micronaut.http.HttpStatus
+import io.micronaut.http.annotation.Post
 import io.micronaut.http.server.types.files.StreamedFile
 import io.micronaut.http.simple.SimpleHttpHeaders
 import io.micronaut.views.View
@@ -77,6 +78,33 @@ class WiresharkController {
         }
     }
 
+    @View("dns")
+    @Get("/dns")
+    HttpResponse dns() {
+        log.info("Dns endpoint")
+        HttpResponse.ok()
+    }
+
+    @Get("/alice.txt")
+    StreamedFile alice() {
+        log.info("Serving alice.txt")
+        InputStream inputStream = WiresharkController.getClassLoader().getResourceAsStream('alice.txt')
+        return new StreamedFile(inputStream, MediaType.TEXT_PLAIN_TYPE)
+    }
+
+    @View("tcp-upload")
+    @Get("/tcp-upload")
+    HttpResponse tcpUpload() {
+        log.info("TCP upload")
+        HttpResponse.ok()
+    }
+
+    @View("tcp-thanks")
+    @Post(value="/tcp-receive", consumes = MediaType.MULTIPART_FORM_DATA)
+    HttpResponse tcpReceive() {
+        log.info("TCP receive")
+        HttpResponse.ok()
+    }
 
     @Get("/image/{imageName}")
     StreamedFile image(String imageName) {
@@ -85,7 +113,7 @@ class WiresharkController {
             case 'SDU.png':
                 InputStream inputStream = WiresharkController.getClassLoader().getResourceAsStream('SDU.png')
                 return new StreamedFile(inputStream, MediaType.IMAGE_PNG_TYPE)
-            case 'threaths.jpg':
+            case 'dave.jpeg':
                 InputStream inputStream = WiresharkController.getClassLoader().getResourceAsStream('dave.jpeg')
                 return new StreamedFile(inputStream, MediaType.IMAGE_JPEG_TYPE)
             default:
